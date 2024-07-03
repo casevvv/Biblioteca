@@ -28,16 +28,16 @@ class controladores
             if ($categoriaL->num_rows > 0) {
                 $stmt = $pdo->prepare("INSERT INTO reg_libro (titulo, autor, editorial, año_publicacion, isbn, cantidad,id_categoria) VALUES (:titulo, :autor, :editorial, :ano_publi, :isbn, :cantidad, :id_categoria)");
                
-                // Bind parameters with data types
+                // Vincular parámetros con tipos de datos
                 $stmt->bindParam(':titulo', $titulo, PDO::PARAM_STR);
                 $stmt->bindParam(':autor', $autor, PDO::PARAM_STR);
                 $stmt->bindParam(':editorial', $editorial, PDO::PARAM_STR);
                 $stmt->bindParam(':ano_publi', $ano_publi, PDO::PARAM_INT);
                 $stmt->bindParam(':isbn', $isbn, PDO::PARAM_STR);
                 $stmt->bindParam(':cantidad', $cantidad, PDO::PARAM_INT);
-                $stmt->bindParam(':id_categoria', $categoriaL, PDO::PARAM_INT); // Assuming $categoriaL holds the actual category ID
+                $stmt->bindParam(':id_categoria', $categoriaL, PDO::PARAM_INT); // Suponiendo que $categoriaL contiene el ID de categoría real
 
-                // Execute the prepared statement
+                // Ejecutar la declaración preparada
                 $stmt->execute();
 
                 echo "Libro agregado exitosamente!<br>";
